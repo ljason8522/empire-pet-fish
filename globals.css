@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Aquatic theme colors */
+    --background: 248 250 252; /* Soft Pearl */
+    --foreground: 31 41 55; /* Deep Charcoal */
+    --card: 255 255 255;
+    --card-foreground: 31 41 55;
+    --popover: 255 255 255;
+    --popover-foreground: 31 41 55;
+    --primary: 30 64 175; /* Deep Ocean Blue */
+    --primary-foreground: 248 250 252;
+    --secondary: 6 182 212; /* Aqua Teal */
+    --secondary-foreground: 255 255 255;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+    --accent: 251 113 133; /* Coral Orange */
+    --accent-foreground: 255 255 255;
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 30 64 175;
+    --chart-1: 6 182 212;
+    --chart-2: 251 113 133;
+    --chart-3: 30 64 175;
+    --chart-4: 14 165 233;
+    --chart-5: 236 72 153;
+    --radius: 0.75rem;
+  }
+  
+  .dark {
+    --background: 15 23 42;
+    --foreground: 248 250 252;
+    --card: 30 41 59;
+    --card-foreground: 248 250 252;
+    --popover: 30 41 59;
+    --popover-foreground: 248 250 252;
+    --primary: 14 165 233;
+    --primary-foreground: 15 23 42;
+    --secondary: 6 182 212;
+    --secondary-foreground: 15 23 42;
+    --muted: 51 65 85;
+    --muted-foreground: 148 163 184;
+    --accent: 251 113 133;
+    --accent-foreground: 15 23 42;
+    --destructive: 239 68 68;
+    --destructive-foreground: 248 250 252;
+    --border: 51 65 85;
+    --input: 51 65 85;
+    --ring: 14 165 233;
+    --chart-1: 6 182 212;
+    --chart-2: 251 113 133;
+    --chart-3: 14 165 233;
+    --chart-4: 30 64 175;
+    --chart-5: 236 72 153;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Aquatic wave background */
+  .wave-bg {
+    background: linear-gradient(135deg, #1e40af 0%, #06b6d4 50%, #0ea5e9 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .wave-bg::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+    animation: wave 10s ease-in-out infinite;
+  }
+  
+  /* Bubble effects */
+  .bubble {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: bubble-float 15s infinite linear;
+  }
+  
+  .bubble:nth-child(1) { left: 10%; animation-delay: 0s; width: 10px; height: 10px; }
+  .bubble:nth-child(2) { left: 20%; animation-delay: 2s; width: 15px; height: 15px; }
+  .bubble:nth-child(3) { left: 35%; animation-delay: 4s; width: 8px; height: 8px; }
+  .bubble:nth-child(4) { left: 50%; animation-delay: 6s; width: 12px; height: 12px; }
+  .bubble:nth-child(5) { left: 70%; animation-delay: 8s; width: 20px; height: 20px; }
+  .bubble:nth-child(6) { left: 85%; animation-delay: 10s; width: 6px; height: 6px; }
+  
+  /* Glass effect for cards */
+  .glass-card {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+  }
+  
+  /* Aquatic hover effects */
+  .aquatic-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .aquatic-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+  }
+}
+
+/* Hide Next.js badge and error messages */
+body > nextjs-portal {
+  display: none;
+}
